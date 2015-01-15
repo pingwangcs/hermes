@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>A3B82A1B-1114-450B-A1C8-75F6C5B41683</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Hermes</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>FBDB938F1A18E6D8D57B544A54467E1A8851DDD4</key>
+		<string>https://github.com/pingwangcs/hermes.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Hermes/Hermes.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>FBDB938F1A18E6D8D57B544A54467E1A8851DDD4</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/pingwangcs/hermes.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>FBDB938F1A18E6D8D57B544A54467E1A8851DDD4</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>FBDB938F1A18E6D8D57B544A54467E1A8851DDD4</string>
+			<key>IDESourceControlWCCName</key>
+			<string>hermes</string>
+		</dict>
+	</array>
+</dict>
+</plist>
