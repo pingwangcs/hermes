@@ -14,7 +14,7 @@
 		738F51081A6776360001A93E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 738F51061A6776360001A93E /* Main.storyboard */; };
 		738F510A1A6776360001A93E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 738F51091A6776360001A93E /* Images.xcassets */; };
 		738F510D1A6776360001A93E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 738F510B1A6776360001A93E /* LaunchScreen.xib */; };
-		738F51191A6776360001A93E /* HermesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 738F51181A6776360001A93E /* HermesTests.m */; };
+		738F51191A6776360001A93E /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 738F51181A6776360001A93E /* Tests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +42,7 @@
 		738F510C1A6776360001A93E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		738F51121A6776360001A93E /* HermesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HermesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		738F51171A6776360001A93E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		738F51181A6776360001A93E /* HermesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HermesTests.m; sourceTree = "<group>"; };
+		738F51181A6776360001A93E /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,11 +63,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7301E4E51A677AB700CBEB6A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				738F51001A6776360001A93E /* FirstViewController.h */,
+				738F51011A6776360001A93E /* FirstViewController.m */,
+				738F51031A6776360001A93E /* SecondViewController.h */,
+				738F51041A6776360001A93E /* SecondViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		7301E4E71A677AEC00CBEB6A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		738F50ED1A6776360001A93E = {
 			isa = PBXGroup;
 			children = (
 				738F50F81A6776360001A93E /* Hermes */,
-				738F51151A6776360001A93E /* HermesTests */,
+				738F51151A6776360001A93E /* Tests */,
 				738F50F71A6776360001A93E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -84,12 +102,10 @@
 		738F50F81A6776360001A93E /* Hermes */ = {
 			isa = PBXGroup;
 			children = (
+				7301E4E51A677AB700CBEB6A /* Controllers */,
+				7301E4E71A677AEC00CBEB6A /* Views */,
 				738F50FD1A6776360001A93E /* AppDelegate.h */,
 				738F50FE1A6776360001A93E /* AppDelegate.m */,
-				738F51001A6776360001A93E /* FirstViewController.h */,
-				738F51011A6776360001A93E /* FirstViewController.m */,
-				738F51031A6776360001A93E /* SecondViewController.h */,
-				738F51041A6776360001A93E /* SecondViewController.m */,
 				738F51061A6776360001A93E /* Main.storyboard */,
 				738F51091A6776360001A93E /* Images.xcassets */,
 				738F510B1A6776360001A93E /* LaunchScreen.xib */,
@@ -107,12 +123,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		738F51151A6776360001A93E /* HermesTests */ = {
+		738F51151A6776360001A93E /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				738F51181A6776360001A93E /* HermesTests.m */,
+				738F51181A6776360001A93E /* Tests.m */,
 				738F51161A6776360001A93E /* Supporting Files */,
 			);
+			name = Tests;
 			path = HermesTests;
 			sourceTree = "<group>";
 		};
@@ -235,7 +252,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				738F51191A6776360001A93E /* HermesTests.m in Sources */,
+				738F51191A6776360001A93E /* Tests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,6 +435,7 @@
 				738F511E1A6776360001A93E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		738F511F1A6776360001A93E /* Build configuration list for PBXNativeTarget "HermesTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +444,7 @@
 				738F51211A6776360001A93E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

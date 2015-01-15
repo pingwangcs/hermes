@@ -1,6 +1,6 @@
 //
-//  HermesTests.m
-//  HermesTests
+//  Tests.m
+//  Tests
 //
 //  Created by XuanXie on 1/14/15.
 //  Copyright (c) 2015 XuanXie. All rights reserved.
@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 
-@interface HermesTests : XCTestCase
+@interface Tests : XCTestCase
 
 @end
 
-@implementation HermesTests
+@implementation Tests
 
 - (void)setUp {
     [super setUp];
