@@ -7,6 +7,7 @@
 //
 
 #import "FirstViewController.h"
+#import "ZHEventNetworkService.h"
 
 @interface FirstViewController ()
 
@@ -17,6 +18,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    NSLog(@"start");
+    ZHEventNetworkService *events = [[ZHEventNetworkService alloc] init];
+    [events getAllEvents];
+    NSLog(@"end");
 }
 
 - (void)didReceiveMemoryWarning {
