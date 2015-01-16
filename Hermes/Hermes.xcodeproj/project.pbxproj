@@ -10,7 +10,7 @@
 		7320877C1A67848600823526 /* ZHEventNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7320877B1A67848600823526 /* ZHEventNetworkService.m */; };
 		738F50FC1A6776360001A93E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 738F50FB1A6776360001A93E /* main.m */; };
 		738F50FF1A6776360001A93E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 738F50FE1A6776360001A93E /* AppDelegate.m */; };
-		738F51021A6776360001A93E /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 738F51011A6776360001A93E /* FirstViewController.m */; };
+		738F51021A6776360001A93E /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 738F51011A6776360001A93E /* HomePageViewController.m */; };
 		738F51051A6776360001A93E /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 738F51041A6776360001A93E /* SecondViewController.m */; };
 		738F51081A6776360001A93E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 738F51061A6776360001A93E /* Main.storyboard */; };
 		738F510A1A6776360001A93E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 738F51091A6776360001A93E /* Images.xcassets */; };
@@ -25,6 +25,7 @@
 		73A15C231A68D03600E255A4 /* Hermes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 73A15C211A68D03600E255A4 /* Hermes.xcdatamodeld */; };
 		73A15C271A68D1D600E255A4 /* ZHModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A15C261A68D1D600E255A4 /* ZHModel.m */; };
 		73A15C2A1A68DFF900E255A4 /* ZHEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A15C291A68DFF900E255A4 /* ZHEvent.m */; };
+		73A15C2D1A68E65F00E255A4 /* ZHModelConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A15C2C1A68E65F00E255A4 /* ZHModelConstants.m */; };
 		B8E0BB6B621BAB1F6E4C1AB0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A5C2B891C0A8B9D117D63D3 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -48,8 +49,8 @@
 		738F50FB1A6776360001A93E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		738F50FD1A6776360001A93E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		738F50FE1A6776360001A93E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		738F51001A6776360001A93E /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		738F51011A6776360001A93E /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		738F51001A6776360001A93E /* HomePageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomePageViewController.h; sourceTree = "<group>"; };
+		738F51011A6776360001A93E /* HomePageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomePageViewController.m; sourceTree = "<group>"; };
 		738F51031A6776360001A93E /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		738F51041A6776360001A93E /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		738F51071A6776360001A93E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -69,6 +70,8 @@
 		73A15C261A68D1D600E255A4 /* ZHModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHModel.m; sourceTree = "<group>"; };
 		73A15C281A68DFF900E255A4 /* ZHEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHEvent.h; sourceTree = "<group>"; };
 		73A15C291A68DFF900E255A4 /* ZHEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHEvent.m; sourceTree = "<group>"; };
+		73A15C2B1A68E64300E255A4 /* ZHModelConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZHModelConstants.h; sourceTree = "<group>"; };
+		73A15C2C1A68E65F00E255A4 /* ZHModelConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHModelConstants.m; sourceTree = "<group>"; };
 		D0BC63B46EBC21C4799CA3A7 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,8 +112,8 @@
 		7301E4E51A677AB700CBEB6A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				738F51001A6776360001A93E /* FirstViewController.h */,
-				738F51011A6776360001A93E /* FirstViewController.m */,
+				738F51001A6776360001A93E /* HomePageViewController.h */,
+				738F51011A6776360001A93E /* HomePageViewController.m */,
 				738F51031A6776360001A93E /* SecondViewController.h */,
 				738F51041A6776360001A93E /* SecondViewController.m */,
 			);
@@ -213,6 +216,8 @@
 				73A15C291A68DFF900E255A4 /* ZHEvent.m */,
 				73A15C251A68D1BB00E255A4 /* ZHModel.h */,
 				73A15C261A68D1D600E255A4 /* ZHModel.m */,
+				73A15C2B1A68E64300E255A4 /* ZHModelConstants.h */,
+				73A15C2C1A68E65F00E255A4 /* ZHModelConstants.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -367,12 +372,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				73A15C2A1A68DFF900E255A4 /* ZHEvent.m in Sources */,
+				73A15C2D1A68E65F00E255A4 /* ZHModelConstants.m in Sources */,
 				738F51051A6776360001A93E /* SecondViewController.m in Sources */,
 				73A15C231A68D03600E255A4 /* Hermes.xcdatamodeld in Sources */,
 				73A15C271A68D1D600E255A4 /* ZHModel.m in Sources */,
 				738F50FF1A6776360001A93E /* AppDelegate.m in Sources */,
 				7320877C1A67848600823526 /* ZHEventNetworkService.m in Sources */,
-				738F51021A6776360001A93E /* FirstViewController.m in Sources */,
+				738F51021A6776360001A93E /* HomePageViewController.m in Sources */,
 				738F50FC1A6776360001A93E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

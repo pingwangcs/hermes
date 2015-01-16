@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+@class ZHEvent;
 
 @interface ZHModel : NSObject
 
@@ -17,9 +18,9 @@
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 + (id)sharedModel;
-
 - (void)saveContext;
-
 - (NSURL *)applicationDocumentsDirectory;
+
+- (ZHEvent *)fetchEventByGuid:(NSString *)guid;
 
 @end

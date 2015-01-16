@@ -7,6 +7,7 @@
 //
 
 #import "ZHModel.h"
+#import "ZHModelConstants.h"
 
 static ZHModel *sharedModel = nil;
 
@@ -26,6 +27,13 @@ static ZHModel *sharedModel = nil;
         }
     }
     return sharedModel;
+}
+
+- (id)init
+{
+    self = [super init];
+
+    return self;
 }
 
 - (NSManagedObjectContext *)managedObjectContext
@@ -95,6 +103,30 @@ static ZHModel *sharedModel = nil;
             abort();
         }
     }
+}
+
+- (ZHEvent *)fetchEventByGuid:(NSString *)guid
+{
+    ZHEvent *event = nil;
+    
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:entity_Event
+                                              inManagedObjectContext:[self managedObjectContext]];
+    [request setEntity:entity];
+    [request setResultType:NSManagedObjectResultType];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"guid == %@", guid];
+    [request setPredicate:predicate];
+    
+    NSError *error = nil;
+    NSArray *object = [[self managedObjectContext] executeFetchRequest:request error:&error];
+    
+    if ([object count] > 0)
+    {
+        event = (ZHEvent *) [object objectAtIndex:0];
+    }
+    
+    return event;
 }
 
 @end
