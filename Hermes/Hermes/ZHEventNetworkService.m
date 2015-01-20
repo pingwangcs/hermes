@@ -10,6 +10,7 @@
 #import "ZHEvent.h"
 #import "ZHModel.h"
 #import "ZHModelConstants.h"
+#import "ZHUtility.h"
 
 NSString * const BaseURLString = @"http://51zhaohu.com/services/api/rest/json/";
 
@@ -74,22 +75,27 @@ NSString * const BaseURLString = @"http://51zhaohu.com/services/api/rest/json/";
 - (void) parseEvent:(NSDictionary *)dictionary
 {
     NSString *guid = (NSString *)dictionary[@"guid"];
-    NSLog(@"guid: %@", guid);
-    
-    ZHEvent *event = [[ZHModel sharedModel] fetchEventByGuid:guid];
+
+    ZHEvent *event = [[ZHModel sharedModel] getEventByGuid:guid];
     
     if (event == nil)
     {
-        event = (ZHEvent *)[NSEntityDescription insertNewObjectForEntityForName:entity_Event inManagedObjectContext:_context];
-        event.guid = [(NSNumber *)dictionary[@"guid"] stringValue];
-        event.title = (NSString *)dictionary[@"title"];
-        event.country = (NSString *)dictionary[@"country"];
-        event.state = (NSString *)dictionary[@"state"];
+        event = (ZHEvent *)[NSEntityDescription insertNewObjectForEntityForName:entity_Event
+                                                         inManagedObjectContext:_context];
+
+        event.address = (NSString *)dictionary[@"address"];
         event.city = (NSString *)dictionary[@"city"];
-    }
-    else
-    {
-        NSLog(@"Found!");
+        event.country = (NSString *)dictionary[@"country"];
+        event.endTime = [ZHUtility getDateFromString:(NSString *)dictionary[@"end_date"]];
+        event.groupName = (NSString *)dictionary[@"group_name"];
+        event.groupUrl = (NSString *)dictionary[@"group_url"];
+        event.guid = [(NSNumber *)dictionary[@"guid"] stringValue];
+        event.ownerName = (NSString *)dictionary[@"owner_name"];
+        event.ownerUrl = (NSString *)dictionary[@"owner_url"];
+        event.startTime = [ZHUtility getDateFromString:(NSString *)dictionary[@"start_date"]];
+        event.state = (NSString *)dictionary[@"state"];
+        event.title = (NSString *)dictionary[@"title"];
+        event.zip = (NSString *)dictionary[@"zip"];
     }
 }
 

@@ -21,6 +21,6 @@
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 
-- (ZHEvent *)fetchEventByGuid:(NSString *)guid;
+- (ZHEvent *)getEventByGuid:(NSString *)guid;
 
 @end

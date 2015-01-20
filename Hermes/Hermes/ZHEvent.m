@@ -11,15 +11,19 @@
 
 @implementation ZHEvent
 
-@dynamic title;
-@dynamic guid;
-@dynamic country;
-@dynamic state;
-@dynamic city;
 @dynamic address;
-@dynamic zip;
-@dynamic iconUrl;
-@dynamic startTime;
+@dynamic city;
+@dynamic country;
 @dynamic endTime;
+@dynamic groupName;
+@dynamic groupUrl;
+@dynamic guid;
+@dynamic iconUrl;
+@dynamic ownerName;
+@dynamic ownerUrl;
+@dynamic startTime;
+@dynamic state;
+@dynamic title;
+@dynamic zip;
 
 @end

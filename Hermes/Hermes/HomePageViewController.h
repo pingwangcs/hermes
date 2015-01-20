@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 
-@interface HomePageViewController : UITableViewController
+@interface HomePageViewController : UITableViewController <NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, strong) NSManagedObjectContext* managedObjectContext;
-@property (nonatomic, strong) NSArray *allEvents;
+@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 
 @end
 

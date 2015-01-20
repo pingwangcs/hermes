@@ -78,7 +78,12 @@ static ZHModel *sharedModel = nil;
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
 
-    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType
+                                                   configuration:nil
+                                                             URL:storeURL
+                                                         options:nil
+                                                           error:&error])
+    {
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
@@ -105,7 +110,7 @@ static ZHModel *sharedModel = nil;
     }
 }
 
-- (ZHEvent *)fetchEventByGuid:(NSString *)guid
+- (ZHEvent *)getEventByGuid:(NSString *)guid
 {
     ZHEvent *event = nil;
     
@@ -113,10 +118,11 @@ static ZHModel *sharedModel = nil;
     NSEntityDescription *entity = [NSEntityDescription entityForName:entity_Event
                                               inManagedObjectContext:[self managedObjectContext]];
     [request setEntity:entity];
-    [request setResultType:NSManagedObjectResultType];
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"guid == %@", guid];
     [request setPredicate:predicate];
+    
+    [request setResultType:NSManagedObjectResultType];
     
     NSError *error = nil;
     NSArray *object = [[self managedObjectContext] executeFetchRequest:request error:&error];
