@@ -12,7 +12,9 @@
 #import "ZHModelConstants.h"
 #import "ZHUtility.h"
 
-NSString * const BaseURLString = @"http://51zhaohu.com/services/api/rest/json/";
+
+static NSString *BaseURLString = @"http://51zhaohu.com/services/api/rest/json/";
+
 
 @interface ZHEventNetworkService ()
 
@@ -37,7 +39,7 @@ NSString * const BaseURLString = @"http://51zhaohu.com/services/api/rest/json/";
     return self;
 }
 
-- (void) getAllEvents
+- (void)getAllEvents
 {
     NSString *string = [NSString stringWithFormat:@"%@?method=event.search&keyword=全部兴趣", BaseURLString];
     NSURL *url = [NSURL URLWithString:[string stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]];
@@ -52,14 +54,13 @@ NSString * const BaseURLString = @"http://51zhaohu.com/services/api/rest/json/";
         NSLog(@"%@", responseObject);
         
         NSDictionary *response = responseObject;
-        
         NSDictionary *result = response[@"result"];
-        NSLog(@"Count: %lu", [result count]);
-
         NSString *status = response[@"status"];
         NSLog(@"Status: %@", status);
 
-        for (NSDictionary *event in result)
+        NSDictionary *entities = result[@"entities"];
+        
+        for (NSDictionary *event in entities)
         {
             [self parseEvent:event];
         }
@@ -72,7 +73,7 @@ NSString * const BaseURLString = @"http://51zhaohu.com/services/api/rest/json/";
     [operation start];
 }
 
-- (void) parseEvent:(NSDictionary *)dictionary
+- (void)parseEvent:(NSDictionary *)dictionary
 {
     NSString *guid = (NSString *)dictionary[@"guid"];
 
@@ -87,14 +88,19 @@ NSString * const BaseURLString = @"http://51zhaohu.com/services/api/rest/json/";
         event.city = (NSString *)dictionary[@"city"];
         event.country = (NSString *)dictionary[@"country"];
         event.endTime = [ZHUtility getDateFromString:(NSString *)dictionary[@"end_date"]];
+        event.fullAddress = (NSString *)dictionary[@"full_address"];
         event.groupName = (NSString *)dictionary[@"group_name"];
         event.groupUrl = (NSString *)dictionary[@"group_url"];
         event.guid = [(NSNumber *)dictionary[@"guid"] stringValue];
+        event.iconUrlLarge = (NSString *)dictionary[@"icon_url_large"];
+        event.iconUrlMedium = (NSString *)dictionary[@"icon_url_medium"];
+        event.iconUrlSmall = (NSString *)dictionary[@"icon_url_small"];
         event.ownerName = (NSString *)dictionary[@"owner_name"];
         event.ownerUrl = (NSString *)dictionary[@"owner_url"];
         event.startTime = [ZHUtility getDateFromString:(NSString *)dictionary[@"start_date"]];
         event.state = (NSString *)dictionary[@"state"];
         event.title = (NSString *)dictionary[@"title"];
+        event.url = (NSString *)dictionary[@"url"];
         event.zip = (NSString *)dictionary[@"zip"];
     }
 }

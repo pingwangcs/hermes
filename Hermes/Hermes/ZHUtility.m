@@ -8,6 +8,7 @@
 
 #import "ZHUtility.h"
 
+
 static NSDateFormatter *aDateFormatter = nil;
 
 @implementation ZHUtility
@@ -28,6 +29,11 @@ static NSDateFormatter *aDateFormatter = nil;
     NSDate *date = [[ZHUtility dateFormatter] dateFromString:string];
 
     return date;
+}
+
++ (NSString *)getStringFromDate:(NSDate *)date
+{
+    return [[ZHUtility dateFormatter] stringFromDate:date];
 }
 
 @end

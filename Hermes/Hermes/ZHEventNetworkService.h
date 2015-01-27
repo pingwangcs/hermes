@@ -9,8 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "AFNetworking.h"
 
+
 @interface ZHEventNetworkService : NSObject
 
-- (void) getAllEvents;
+- (void)getAllEvents;
 
 @end

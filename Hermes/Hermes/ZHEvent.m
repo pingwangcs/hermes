@@ -15,15 +15,19 @@
 @dynamic city;
 @dynamic country;
 @dynamic endTime;
+@dynamic fullAddress;
 @dynamic groupName;
 @dynamic groupUrl;
 @dynamic guid;
-@dynamic iconUrl;
+@dynamic iconUrlLarge;
+@dynamic iconUrlMedium;
+@dynamic iconUrlSmall;
 @dynamic ownerName;
 @dynamic ownerUrl;
 @dynamic startTime;
 @dynamic state;
 @dynamic title;
+@dynamic url;
 @dynamic zip;
 
 @end

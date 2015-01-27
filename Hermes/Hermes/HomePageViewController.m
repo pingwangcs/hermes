@@ -11,10 +11,18 @@
 #import "ZHModel.h"
 #import "ZHModelConstants.h"
 #import "ZHEventNetworkService.h"
+#import "ZHEventTableViewCell.h"
+#import "ZHEventDetailsViewController.h"
+
+
+static NSString *CellIdentifier = @"ZHEventTableViewCell";
+static NSUInteger BatchSize = 20;
+static CGFloat TableCellHeight = 70.0f;
 
 @interface HomePageViewController ()
 
 @end
+
 
 @implementation HomePageViewController
 
@@ -37,6 +45,7 @@
 {
     ZHEventNetworkService *events = [[ZHEventNetworkService alloc] init];
     [events getAllEvents];
+    [self setTitle:@"主页"];
 }
 
 - (NSManagedObjectContext *)managedObjectContext
@@ -66,7 +75,7 @@
                               initWithKey:@"endTime" ascending:YES];
     [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sort]];
     
-    [fetchRequest setFetchBatchSize:20];
+    [fetchRequest setFetchBatchSize:BatchSize];
     
     NSFetchedResultsController *aFetchedResultsController =
     [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
@@ -85,14 +94,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    [self.tableView registerClass:[ZHEventTableViewCell class] forCellReuseIdentifier:CellIdentifier];
+    
     NSError *error = nil;
     if (![[self fetchedResultsController] performFetch:&error])
     {
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
-    
-    self.title = @"Home Page";
 }
 
 - (void)viewDidUnload
@@ -100,41 +109,41 @@
     self.fetchedResultsController = nil;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ZHEvent *event = [_fetchedResultsController objectAtIndexPath:indexPath];
+    
+    ZHEventDetailsViewController *detailsViewController = [[ZHEventDetailsViewController alloc] initWithEvent:event];
+    
+    [self.navigationController pushViewController:detailsViewController animated:true];
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 80.0f;
+    return TableCellHeight;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return [[_fetchedResultsController sections] count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    id  sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
-    return [sectionInfo numberOfObjects];
-}
-
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
-{
-    ZHEvent *event = [_fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@", event.title];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", event.endTime];
+    return [[[_fetchedResultsController sections] objectAtIndex:section] numberOfObjects];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    ZHEventTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-
     if (cell == nil)
     {
-        cell = [[UITableViewCell alloc] init];
+        cell = [[ZHEventTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    [self configureCell:cell atIndexPath:indexPath];
+    ZHEvent *event = [_fetchedResultsController objectAtIndexPath:indexPath];
+    [cell updateWithEvent:event];
     
     return cell;
 }
@@ -161,7 +170,8 @@
             break;
             
         case NSFetchedResultsChangeUpdate:
-            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+            [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                             withRowAnimation:UITableViewRowAnimationAutomatic];
             break;
             
         case NSFetchedResultsChangeMove:
@@ -169,22 +179,6 @@
                              withRowAnimation:UITableViewRowAnimationFade];
             [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]
                              withRowAnimation:UITableViewRowAnimationFade];
-            break;
-    }
-}
-
-- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id )sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type
-{
-    switch(type) {
-            
-        case NSFetchedResultsChangeInsert:
-            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]
-                          withRowAnimation:UITableViewRowAnimationFade];
-            break;
-            
-        case NSFetchedResultsChangeDelete:
-            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex]
-                          withRowAnimation:UITableViewRowAnimationFade];
             break;
     }
 }

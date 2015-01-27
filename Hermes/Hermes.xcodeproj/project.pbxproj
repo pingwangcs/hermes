@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		7320877C1A67848600823526 /* ZHEventNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7320877B1A67848600823526 /* ZHEventNetworkService.m */; };
+		734D9E701A74347A00B85B1F /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 734D9E6F1A74347A00B85B1F /* FirstViewController.m */; };
+		7355D3B71A70B9EA001D0DD1 /* ZHEventTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7355D3B61A70B9EA001D0DD1 /* ZHEventTableViewCell.m */; };
 		738330291A6E2CF9009561F4 /* ZHUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 738330281A6E2CF9009561F4 /* ZHUtility.m */; };
 		738F50FC1A6776360001A93E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 738F50FB1A6776360001A93E /* main.m */; };
 		738F50FF1A6776360001A93E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 738F50FE1A6776360001A93E /* AppDelegate.m */; };
@@ -27,6 +29,7 @@
 		73A15C271A68D1D600E255A4 /* ZHModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A15C261A68D1D600E255A4 /* ZHModel.m */; };
 		73A15C2A1A68DFF900E255A4 /* ZHEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A15C291A68DFF900E255A4 /* ZHEvent.m */; };
 		73A15C2D1A68E65F00E255A4 /* ZHModelConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A15C2C1A68E65F00E255A4 /* ZHModelConstants.m */; };
+		73FEEA4C1A7753560051E761 /* ZHEventDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73FEEA4B1A7753560051E761 /* ZHEventDetailsViewController.m */; };
 		B8E0BB6B621BAB1F6E4C1AB0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A5C2B891C0A8B9D117D63D3 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +48,10 @@
 		3A5C2B891C0A8B9D117D63D3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7320877A1A67843900823526 /* ZHEventNetworkService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHEventNetworkService.h; sourceTree = "<group>"; };
 		7320877B1A67848600823526 /* ZHEventNetworkService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHEventNetworkService.m; sourceTree = "<group>"; };
+		734D9E6E1A74343800B85B1F /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
+		734D9E6F1A74347A00B85B1F /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		7355D3B51A70B97C001D0DD1 /* ZHEventTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZHEventTableViewCell.h; sourceTree = "<group>"; };
+		7355D3B61A70B9EA001D0DD1 /* ZHEventTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHEventTableViewCell.m; sourceTree = "<group>"; };
 		738330271A6E2C89009561F4 /* ZHUtility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZHUtility.h; sourceTree = "<group>"; };
 		738330281A6E2CF9009561F4 /* ZHUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHUtility.m; sourceTree = "<group>"; };
 		738F50F61A6776360001A93E /* Hermes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hermes.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +82,8 @@
 		73A15C291A68DFF900E255A4 /* ZHEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHEvent.m; sourceTree = "<group>"; };
 		73A15C2B1A68E64300E255A4 /* ZHModelConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZHModelConstants.h; sourceTree = "<group>"; };
 		73A15C2C1A68E65F00E255A4 /* ZHModelConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHModelConstants.m; sourceTree = "<group>"; };
+		73FEEA4A1A7753190051E761 /* ZHEventDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZHEventDetailsViewController.h; sourceTree = "<group>"; };
+		73FEEA4B1A7753560051E761 /* ZHEventDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHEventDetailsViewController.m; sourceTree = "<group>"; };
 		D0BC63B46EBC21C4799CA3A7 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,10 +124,16 @@
 		7301E4E51A677AB700CBEB6A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				734D9E6E1A74343800B85B1F /* FirstViewController.h */,
+				734D9E6F1A74347A00B85B1F /* FirstViewController.m */,
 				738F51001A6776360001A93E /* HomePageViewController.h */,
 				738F51011A6776360001A93E /* HomePageViewController.m */,
 				738F51031A6776360001A93E /* SecondViewController.h */,
 				738F51041A6776360001A93E /* SecondViewController.m */,
+				7355D3B51A70B97C001D0DD1 /* ZHEventTableViewCell.h */,
+				7355D3B61A70B9EA001D0DD1 /* ZHEventTableViewCell.m */,
+				73FEEA4A1A7753190051E761 /* ZHEventDetailsViewController.h */,
+				73FEEA4B1A7753560051E761 /* ZHEventDetailsViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -377,12 +392,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				73A15C2A1A68DFF900E255A4 /* ZHEvent.m in Sources */,
+				7355D3B71A70B9EA001D0DD1 /* ZHEventTableViewCell.m in Sources */,
 				73A15C2D1A68E65F00E255A4 /* ZHModelConstants.m in Sources */,
 				738F51051A6776360001A93E /* SecondViewController.m in Sources */,
 				73A15C231A68D03600E255A4 /* Hermes.xcdatamodeld in Sources */,
 				738330291A6E2CF9009561F4 /* ZHUtility.m in Sources */,
 				73A15C271A68D1D600E255A4 /* ZHModel.m in Sources */,
+				734D9E701A74347A00B85B1F /* FirstViewController.m in Sources */,
 				738F50FF1A6776360001A93E /* AppDelegate.m in Sources */,
+				73FEEA4C1A7753560051E761 /* ZHEventDetailsViewController.m in Sources */,
 				7320877C1A67848600823526 /* ZHEventNetworkService.m in Sources */,
 				738F51021A6776360001A93E /* HomePageViewController.m in Sources */,
 				738F50FC1A6776360001A93E /* main.m in Sources */,
