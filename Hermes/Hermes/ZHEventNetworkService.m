@@ -12,9 +12,7 @@
 #import "ZHModelConstants.h"
 #import "ZHUtility.h"
 
-
 static NSString *BaseURLString = @"http://51zhaohu.com/services/api/rest/json/";
-
 
 @interface ZHEventNetworkService ()
 
@@ -22,13 +20,12 @@ static NSString *BaseURLString = @"http://51zhaohu.com/services/api/rest/json/";
 
 @end
 
-
 @implementation ZHEventNetworkService
 
 @synthesize context = _context;
 
-- (id)init
-{
+- (id)init {
+
     self = [super init];
     
     if (self)
@@ -39,8 +36,8 @@ static NSString *BaseURLString = @"http://51zhaohu.com/services/api/rest/json/";
     return self;
 }
 
-- (void)getAllEvents
-{
+- (void)getAllEvents {
+
     NSString *string = [NSString stringWithFormat:@"%@?method=event.search&keyword=全部兴趣", BaseURLString];
     NSURL *url = [NSURL URLWithString:[string stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
@@ -73,8 +70,8 @@ static NSString *BaseURLString = @"http://51zhaohu.com/services/api/rest/json/";
     [operation start];
 }
 
-- (void)parseEvent:(NSDictionary *)dictionary
-{
+- (void)parseEvent:(NSDictionary *)dictionary {
+
     NSString *guid = (NSString *)dictionary[@"guid"];
 
     ZHEvent *event = [[ZHModel sharedModel] getEventByGuid:guid];

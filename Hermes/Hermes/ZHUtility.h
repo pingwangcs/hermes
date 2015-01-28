@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-
 @interface ZHUtility : NSObject
 
 + (NSDate *)getDateFromString:(NSString *)string;

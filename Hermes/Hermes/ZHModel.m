@@ -137,4 +137,29 @@ static ZHModel *sharedModel = nil;
     return event;
 }
 
+- (ZHPhotoAlbum *)getPhotoAlbumByGuid:(NSString *)guid
+{
+    ZHPhotoAlbum *photoAlbum = nil;
+    
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:entity_PhotoAlbum
+                                              inManagedObjectContext:[self managedObjectContext]];
+    [request setEntity:entity];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"guid == %@", guid];
+    [request setPredicate:predicate];
+    
+    [request setResultType:NSManagedObjectResultType];
+    
+    NSError *error = nil;
+    NSArray *object = [[self managedObjectContext] executeFetchRequest:request error:&error];
+    
+    if ([object count] > 0)
+    {
+        photoAlbum = (ZHPhotoAlbum *) [object objectAtIndex:0];
+    }
+    
+    return photoAlbum;
+}
+
 @end

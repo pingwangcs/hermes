@@ -1,5 +1,5 @@
 //
-//  SecondViewController.h
+//  PhotoWallViewController.h
 //  Hermes
 //
 //  Created by XuanXie on 1/14/15.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SecondViewController : UINavigationController
+@interface PhotoWallViewController : UINavigationController
 
 
 @end

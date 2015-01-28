@@ -8,13 +8,12 @@
 
 #import "ZHUtility.h"
 
-
 static NSDateFormatter *aDateFormatter = nil;
 
 @implementation ZHUtility
 
-+ (NSDateFormatter *)dateFormatter
-{
++ (NSDateFormatter *)dateFormatter {
+
     if (aDateFormatter == nil)
     {
         aDateFormatter = [[NSDateFormatter alloc] init];
@@ -24,15 +23,15 @@ static NSDateFormatter *aDateFormatter = nil;
     return aDateFormatter;
 }
 
-+ (NSDate *)getDateFromString:(NSString *)string
-{
++ (NSDate *)getDateFromString:(NSString *)string {
+
     NSDate *date = [[ZHUtility dateFormatter] dateFromString:string];
 
     return date;
 }
 
-+ (NSString *)getStringFromDate:(NSDate *)date
-{
++ (NSString *)getStringFromDate:(NSDate *)date {
+
     return [[ZHUtility dateFormatter] stringFromDate:date];
 }
 

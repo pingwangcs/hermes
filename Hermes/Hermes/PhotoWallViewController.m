@@ -1,18 +1,18 @@
 //
-//  SecondViewController.m
+//  PhotoWallViewController.m
 //  Hermes
 //
 //  Created by XuanXie on 1/14/15.
 //  Copyright (c) 2015 XuanXie. All rights reserved.
 //
 
-#import "SecondViewController.h"
+#import "PhotoWallViewController.h"
 
-@interface SecondViewController ()
+@interface PhotoWallViewController ()
 
 @end
 
-@implementation SecondViewController
+@implementation PhotoWallViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
