@@ -17,29 +17,45 @@
 
 @implementation ZHEventDetailsViewController
 
-- (id)initWithEvent:(ZHEvent *)event
-{
+- (id)initWithEvent:(ZHEvent *)event {
     self = [super init];
     
-    if (self)
-    {
+    if (self) {
         self.event = event;
+        [self setTitle:self.event.title];
         [self setupWebView];
     }
-    
     return self;
 }
 
-- (void)setupWebView
-{
+- (void)setupWebView {
     self.eventWebView = [[UIWebView alloc] init];
+    
     NSURL *url = [NSURL URLWithString:self.event.url];
-    [self.eventWebView loadRequest:[[NSURLRequest alloc] initWithURL:url]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setHTTPShouldHandleCookies:YES];
+    NSArray *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies];
+    [self addCookies:cookies forRequest:request];
+
+    [self.eventWebView loadRequest:request];
     self.view = self.eventWebView;
 }
 
-- (void)viewDidLoad
-{
+- (void)addCookies:(NSArray *)cookies forRequest:(NSMutableURLRequest *)request {
+    NSString *cookieHeader = [NSString stringWithFormat: @"%@=%@", @"51zhaohu_app", @"true"];
+
+    if ([cookies count] > 0) {
+        for (NSHTTPCookie *cookie in cookies) {
+            cookieHeader = [NSString stringWithFormat: @"%@; %@=%@",cookieHeader,[cookie name],[cookie value]];
+        }
+    }
+
+    if (cookieHeader) {
+        [request setValue:cookieHeader forHTTPHeaderField:@"Cookie"];
+    }
+}
+
+- (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
 }

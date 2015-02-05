@@ -33,42 +33,61 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dmA-kv-R2D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="519" y="-524"/>
+            <point key="canvasLocation" x="519" y="-828"/>
         </scene>
-        <!--Photo Album Collection View Controller-->
-        <scene sceneID="L48-TS-3jx">
+        <!--Feature Event Table View Controller-->
+        <scene sceneID="RIR-qa-ko9">
             <objects>
-                <collectionViewController id="1zY-R8-CxY" customClass="ZHPhotoAlbumCollectionViewController" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="wwn-b2-1xf">
+                <tableViewController id="O1d-wP-hnD" customClass="ZHFeatureEventTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="KOt-u7-GOU">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3Sf-RI-ade">
-                            <size key="itemSize" width="100" height="100"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Nna-RZ-2MQ" customClass="ZHPhotoAlbumCollectionViewCell">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Xcw-KI-t7t" customClass="ZHEventTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xcw-KI-t7t" id="gXU-TD-6FM">
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                            </collectionViewCell>
-                        </cells>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="1zY-R8-CxY" id="feU-LN-vZC"/>
-                            <outlet property="delegate" destination="1zY-R8-CxY" id="kGe-YD-EfF"/>
+                            <outlet property="dataSource" destination="O1d-wP-hnD" id="od2-YB-WMT"/>
+                            <outlet property="delegate" destination="O1d-wP-hnD" id="MAQ-1E-oRb"/>
                         </connections>
-                    </collectionView>
-                    <navigationItem key="navigationItem" id="PfS-hS-RFC"/>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4vu-Bu-jBl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="NwM-9a-VBE"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bus-aC-ZCA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="537" y="318"/>
+            <point key="canvasLocation" x="519" y="-2"/>
+        </scene>
+        <!--Photo Album Table View Controller-->
+        <scene sceneID="2SD-gf-xhb">
+            <objects>
+                <tableViewController id="hJ3-Lk-iYO" customClass="ZHPhotoAlbumTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="dDC-EC-yUG">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="bGM-5g-Mrm" customClass="ZHPhotoAlbumTableViewCell">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bGM-5g-Mrm" id="d09-MC-ydc">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="hJ3-Lk-iYO" id="iZr-Yu-3Dv"/>
+                            <outlet property="delegate" destination="hJ3-Lk-iYO" id="z3o-Ae-xcn"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="6we-QQ-HkZ"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rm8-Wd-Trs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="543" y="894"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -82,12 +101,13 @@
                     </tabBar>
                     <connections>
                         <segue destination="xVL-aE-fs3" kind="relationship" relationship="viewControllers" id="MeO-RC-vOd"/>
-                        <segue destination="Wck-2v-i0K" kind="relationship" relationship="viewControllers" id="sad-LR-4UT"/>
+                        <segue destination="YBn-Ie-TU7" kind="relationship" relationship="viewControllers" id="07i-By-hyF"/>
+                        <segue destination="cLb-pW-rkW" kind="relationship" relationship="viewControllers" id="GfK-KL-cyO"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1259" y="-2"/>
+            <point key="canvasLocation" x="-1251" y="-2"/>
         </scene>
         <!--主页-->
         <scene sceneID="jNk-Le-M4y">
@@ -106,26 +126,45 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3YV-DR-nB3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-329" y="-524"/>
+            <point key="canvasLocation" x="-329" y="-828"/>
         </scene>
-        <!--照片墙-->
-        <scene sceneID="KCq-GO-QrJ">
+        <!--推荐-->
+        <scene sceneID="zSQ-94-uZL">
             <objects>
-                <navigationController title="照片墙" automaticallyAdjustsScrollViewInsets="NO" id="Wck-2v-i0K" customClass="PhotoWallViewController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="照片墙" id="eYH-ll-xjE"/>
+                <navigationController title="推荐" automaticallyAdjustsScrollViewInsets="NO" id="YBn-Ie-TU7" customClass="FeaturePageViewController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="推荐" id="Rcl-fV-vgf"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ouz-XY-VKU">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="b0Y-7L-PH6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="1zY-R8-CxY" kind="relationship" relationship="rootViewController" id="nll-kC-PHw"/>
+                        <segue destination="O1d-wP-hnD" kind="relationship" relationship="rootViewController" id="K0x-Qc-9sd"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="quy-T1-hJE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VOj-sW-K38" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-319" y="318"/>
+            <point key="canvasLocation" x="-329" y="-2"/>
+        </scene>
+        <!--照片墙-->
+        <scene sceneID="rDU-7d-TeR">
+            <objects>
+                <navigationController title="照片墙" automaticallyAdjustsScrollViewInsets="NO" id="cLb-pW-rkW" customClass="PhotoWallViewController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="照片墙" id="doR-6T-4NP"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dXQ-7Y-fkV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hJ3-Lk-iYO" kind="relationship" relationship="rootViewController" id="RBb-4y-LT6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hVc-mq-UJn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-321" y="894"/>
         </scene>
     </scenes>
 </document>

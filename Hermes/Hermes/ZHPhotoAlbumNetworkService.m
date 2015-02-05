@@ -6,10 +6,10 @@
 //  Copyright (c) 2015 XuanXie. All rights reserved.
 //
 
-#import "ZHPhotoAlbumNetworkService.h"
-#import "ZHPhotoAlbum.h"
 #import "ZHModel.h"
 #import "ZHModelConstants.h"
+#import "ZHPhotoAlbum.h"
+#import "ZHPhotoAlbumNetworkService.h"
 #import "ZHUtility.h"
 
 static NSString *BaseURLString = @"http://51zhaohu.com/services/api/rest/json/";
@@ -25,58 +25,45 @@ static NSString *BaseURLString = @"http://51zhaohu.com/services/api/rest/json/";
 @synthesize context = _context;
 
 - (id)init {
-
     self = [super init];
     
     if (self) {
         _context = [[ZHModel sharedModel] managedObjectContext];
     }
-    
     return self;
 }
 
 - (void)getAllPhotoAlbums {
-    
-    NSString *string = [NSString stringWithFormat:@"%@?method=album.list", BaseURLString];
-    NSURL *url = [NSURL URLWithString:[string stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]];
+    NSString *string = [ZHUtility encodeString:[NSString stringWithFormat:@"%@?method=album.list", BaseURLString]];
+    NSURL *url = [NSURL URLWithString:string];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     operation.responseSerializer = [AFJSONResponseSerializer serializer];
     
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-
-        NSLog(@"Success");
-        NSLog(@"%@", responseObject);
         
         NSDictionary *response = responseObject;
         NSDictionary *result = response[@"result"];
-        NSString *status = response[@"status"];
-        NSLog(@"Status: %@", status);
-        
         NSDictionary *entities = result[@"entities"];
         
-        for (NSDictionary *photoAlbum in entities)
-        {
+        for (NSDictionary *photoAlbum in entities) {
             [self parsePhotoAlbum:photoAlbum];
         }
         [[ZHModel sharedModel] saveContext];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Failed");
+        [ZHUtility logError:error];
     }];
     
     [operation start];
 }
 
 - (void)parsePhotoAlbum:(NSDictionary *)dictionary {
-    
     NSString *guid = (NSString *)dictionary[@"guid"];
-    
     ZHPhotoAlbum *photoAlbum = [[ZHModel sharedModel] getPhotoAlbumByGuid:guid];
     
-    if (photoAlbum == nil)
-    {
+    if (photoAlbum == nil) {
         photoAlbum = (ZHPhotoAlbum *)[NSEntityDescription insertNewObjectForEntityForName:entity_PhotoAlbum
                                                                    inManagedObjectContext:_context];
         

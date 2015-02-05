@@ -2,7 +2,7 @@
 //  ZHEvent.m
 //  Hermes
 //
-//  Created by XuanXie on 1/15/15.
+//  Created by XuanXie on 2/4/15.
 //  Copyright (c) 2015 XuanXie. All rights reserved.
 //
 
@@ -22,6 +22,7 @@
 @dynamic iconUrlLarge;
 @dynamic iconUrlMedium;
 @dynamic iconUrlSmall;
+@dynamic isFeatured;
 @dynamic ownerName;
 @dynamic ownerUrl;
 @dynamic startTime;

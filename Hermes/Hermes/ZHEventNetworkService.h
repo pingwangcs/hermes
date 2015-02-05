@@ -12,5 +12,6 @@
 @interface ZHEventNetworkService : NSObject
 
 - (void)getAllEvents;
+- (void)getAllFeaturedEvents;
 
 @end

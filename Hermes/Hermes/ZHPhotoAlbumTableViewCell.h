@@ -9,8 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ZHPhotoAlbum.h"
 
-
-@interface ZHPhotoAlbumCollectionViewCell : UICollectionViewCell
+@interface ZHPhotoAlbumTableViewCell : UITableViewCell
 
 - (void)updateWithPhotoAlbum:(ZHPhotoAlbum *)photoAlbum;
 

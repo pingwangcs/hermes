@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 XuanXie. All rights reserved.
 //
 
-#import "ZHEventNetworkService.h"
 #import "ZHEvent.h"
+#import "ZHEventNetworkService.h"
 #import "ZHModel.h"
 #import "ZHModelConstants.h"
 #import "ZHUtility.h"
@@ -25,59 +25,71 @@ static NSString *BaseURLString = @"http://51zhaohu.com/services/api/rest/json/";
 @synthesize context = _context;
 
 - (id)init {
-
     self = [super init];
     
-    if (self)
-    {
+    if (self) {
         _context = [[ZHModel sharedModel] managedObjectContext];
     }
-    
     return self;
 }
 
 - (void)getAllEvents {
-
-    NSString *string = [NSString stringWithFormat:@"%@?method=event.search&keyword=全部兴趣", BaseURLString];
-    NSURL *url = [NSURL URLWithString:[string stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]];
+    NSString *string = [ZHUtility encodeString:[NSString stringWithFormat:@"%@?method=event.search&keyword=全部兴趣", BaseURLString]];
+    NSURL *url = [NSURL URLWithString:string];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
 
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     operation.responseSerializer = [AFJSONResponseSerializer serializer];
     
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        NSLog(@"Success");
-        NSLog(@"%@", responseObject);
-        
+
         NSDictionary *response = responseObject;
         NSDictionary *result = response[@"result"];
-        NSString *status = response[@"status"];
-        NSLog(@"Status: %@", status);
-
         NSDictionary *entities = result[@"entities"];
         
-        for (NSDictionary *event in entities)
-        {
-            [self parseEvent:event];
+        for (NSDictionary *event in entities) {
+            [self parseEvent:event withIsFeatured:NO];
         }
         [[ZHModel sharedModel] saveContext];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Failed");
+        [ZHUtility logError:error];
     }];
 
     [operation start];
 }
 
-- (void)parseEvent:(NSDictionary *)dictionary {
+- (void)getAllFeaturedEvents {
+    NSString *string = [ZHUtility encodeString:[NSString stringWithFormat:@"%@?method=event.search&featured=y", BaseURLString]];
+    NSURL *url = [NSURL URLWithString:string];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    operation.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSDictionary *response = responseObject;
+        NSDictionary *result = response[@"result"];
+        NSDictionary *entities = result[@"entities"];
+        
+        for (NSDictionary *event in entities) {
+            [self parseEvent:event withIsFeatured:YES];
+        }
+        [[ZHModel sharedModel] saveContext];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [ZHUtility logError:error];
+    }];
+    
+    [operation start];
+}
 
+- (void)parseEvent:(NSDictionary *)dictionary withIsFeatured:(Boolean)isFeatured {
     NSString *guid = (NSString *)dictionary[@"guid"];
-
     ZHEvent *event = [[ZHModel sharedModel] getEventByGuid:guid];
     
-    if (event == nil)
-    {
+    if (event == nil) {
         event = (ZHEvent *)[NSEntityDescription insertNewObjectForEntityForName:entity_Event
                                                          inManagedObjectContext:_context];
 
@@ -99,6 +111,10 @@ static NSString *BaseURLString = @"http://51zhaohu.com/services/api/rest/json/";
         event.title = (NSString *)dictionary[@"title"];
         event.url = (NSString *)dictionary[@"url"];
         event.zip = (NSString *)dictionary[@"zip"];
+    }
+    
+    if (event != nil) {
+        event.isFeatured = [NSNumber numberWithBool:isFeatured];
     }
 }
 

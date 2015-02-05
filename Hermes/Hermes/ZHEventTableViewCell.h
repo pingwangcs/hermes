@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "ZHEvent.h"
 
-
 @interface ZHEventTableViewCell : UITableViewCell
 
 - (void)updateWithEvent:(ZHEvent *)event;

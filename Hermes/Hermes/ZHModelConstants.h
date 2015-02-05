@@ -9,4 +9,5 @@
 #import <Foundation/Foundation.h>
 
 extern NSString * const entity_Event;
+extern NSString * const entity_Photo;
 extern NSString * const entity_PhotoAlbum;

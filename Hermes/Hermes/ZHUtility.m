@@ -12,10 +12,8 @@ static NSDateFormatter *aDateFormatter = nil;
 
 @implementation ZHUtility
 
-+ (NSDateFormatter *)dateFormatter {
-
-    if (aDateFormatter == nil)
-    {
++ (NSDateFormatter *)dateFormatter {    
+    if (aDateFormatter == nil) {
         aDateFormatter = [[NSDateFormatter alloc] init];
         [aDateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
     }
@@ -24,15 +22,23 @@ static NSDateFormatter *aDateFormatter = nil;
 }
 
 + (NSDate *)getDateFromString:(NSString *)string {
-
-    NSDate *date = [[ZHUtility dateFormatter] dateFromString:string];
-
-    return date;
+    return [[ZHUtility dateFormatter] dateFromString:string];
 }
 
 + (NSString *)getStringFromDate:(NSDate *)date {
-
     return [[ZHUtility dateFormatter] stringFromDate:date];
+}
+
++ (NSString *)encodeString:(NSString *)string {
+    return [string stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+}
+
++ (NSString *)decodeString:(NSString *)string {
+    return [string stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+}
+
++ (void)logError:(NSError *)error {
+    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
 }
 
 @end

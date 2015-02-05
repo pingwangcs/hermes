@@ -6,20 +6,18 @@
 //  Copyright (c) 2015 XuanXie. All rights reserved.
 //
 
-#import "ZHEventTableViewCell.h"
 #import "UIImageView+AFNetworking.h"
+#import "ZHEventTableViewCell.h"
 #import "ZHUtility.h"
-
 
 static const CGFloat ZHEventCellMargin1 = 10.0f;
 static const CGFloat ZHEventCellMargin2 = 5.0f;
-static const CGFloat ZHEventCellMargin3 = 2.0f;
+static const CGFloat ZHEventCellMargin3 = 7.5f;
 static const CGFloat ZHEventImageSize = 60.0f;
 static const CGFloat ZHEventTitleHeight = 20.0f;
 static const CGFloat ZHEventTimeHeight = 10.0f;
 static const CGFloat ZHEventOwnerWidth = 40.0f;
 static const CGFloat ZHEventGroupWidth = 30.0f;
-
 
 @interface ZHEventTableViewCell ()
 
@@ -34,40 +32,33 @@ static const CGFloat ZHEventGroupWidth = 30.0f;
 
 @end
 
-
 @implementation ZHEventTableViewCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
-    if (self)
-    {
+    if (self) {
         [self setupImageView];
         [self setupTextLabel];
     }
-    
     return self;
 }
 
-- (void)setupImageView
-{
+- (void)setupImageView {
     self.eventImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
     [self.contentView addSubview:self.eventImageView];
 }
 
-- (void)setupTextLabel
-{
-    self.textLabel.textColor = [UIColor colorWithRed:0.0 green:0.5 blue:1.0 alpha:1.0];
+- (void)setupTextLabel {
     self.textLabel.font = [UIFont fontWithName:@"STHeitiSC-Medium" size:15];
     [self.contentView addSubview:self.textLabel];
     
     self.startTimeLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    self.startTimeLabel.font = [UIFont fontWithName:@"STHeitiSC-Medium" size:10];
+    self.startTimeLabel.font = [UIFont fontWithName:@"STHeitiSC-Light" size:10];
     [self.contentView addSubview:self.startTimeLabel];
     
     self.endTimeLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    self.endTimeLabel.font = [UIFont fontWithName:@"STHeitiSC-Medium" size:10];
+    self.endTimeLabel.font = [UIFont fontWithName:@"STHeitiSC-Light" size:10];
     [self.contentView addSubview:self.endTimeLabel];
     
     self.ownerLabel = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -76,7 +67,6 @@ static const CGFloat ZHEventGroupWidth = 30.0f;
     [self.contentView addSubview:self.ownerLabel];
     
     self.ownerNameLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    self.ownerNameLabel.textColor = [UIColor colorWithRed:0.0 green:0.5 blue:1.0 alpha:1.0];
     self.ownerNameLabel.font = [UIFont fontWithName:@"STHeitiSC-Medium" size:10];
     [self.contentView addSubview:self.ownerNameLabel];
     
@@ -86,13 +76,11 @@ static const CGFloat ZHEventGroupWidth = 30.0f;
     [self.contentView addSubview:self.groupLabel];
     
     self.groupNameLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    self.groupNameLabel.textColor = [UIColor colorWithRed:0.0 green:0.5 blue:1.0 alpha:1.0];
     self.groupNameLabel.font = [UIFont fontWithName:@"STHeitiSC-Medium" size:10];
     [self.contentView addSubview:self.groupNameLabel];
 }
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     [super layoutSubviews];
     
     CGFloat imageViewTopPadding = ceil((CGRectGetHeight(self.bounds) - ZHEventImageSize) / 2);
@@ -114,8 +102,7 @@ static const CGFloat ZHEventGroupWidth = 30.0f;
     self.groupNameLabel.frame = CGRectMake(textLabelLeftPadding + timeLabelWidth + ZHEventGroupWidth, ownerLabelTopPadding, timeLabelWidth - ZHEventGroupWidth, ZHEventTimeHeight);
 }
 
-- (void)updateWithEvent:(ZHEvent *)event
-{
+- (void)updateWithEvent:(ZHEvent *)event {
     self.event = event;
     
     self.textLabel.text = event.title;
@@ -128,7 +115,6 @@ static const CGFloat ZHEventGroupWidth = 30.0f;
     self.ownerNameLabel.text = event.ownerName;
     self.groupNameLabel.text = event.groupName;
     
-    
     NSURL *iconUrl = [NSURL URLWithString:event.iconUrlSmall];
     NSURLRequest *request = [NSURLRequest requestWithURL:iconUrl];
     UIImage *placeholderImage = [UIImage imageNamed:@"placeholder"];
@@ -137,14 +123,14 @@ static const CGFloat ZHEventGroupWidth = 30.0f;
     [self.eventImageView setImageWithURLRequest:request
                                placeholderImage:placeholderImage
                                         success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-                                        weakSelf.eventImageView.image = image;
-                                        [weakSelf setNeedsLayout];
-                                    } failure:nil];
+                                            weakSelf.eventImageView.image = image;
+                                            [weakSelf setNeedsLayout];
+                                        } failure:nil];
 }
 
-- (void)prepareForReuse
-{
+- (void)prepareForReuse {
     [super prepareForReuse];
+
     self.textLabel.text = @"";
     self.eventImageView.image = nil;
     self.startTimeLabel.text = @"";

@@ -1,29 +1,30 @@
 //
-//  ZHEventTableViewController.m
+//  ZHPhotoAlbumCollectionViewController.m
 //  Hermes
 //
-//  Created by XuanXie on 1/14/15.
+//  Created by XuanXie on 1/27/15.
 //  Copyright (c) 2015 XuanXie. All rights reserved.
 //
 
-#import "ZHEvent.h"
-#import "ZHEventDetailsViewController.h"
-#import "ZHEventNetworkService.h"
-#import "ZHEventTableViewCell.h"
-#import "ZHEventTableViewController.h"
 #import "ZHModel.h"
 #import "ZHModelConstants.h"
+#import "ZHPhotoAlbum.h"
+#import "ZHPhotoAlbumTableViewCell.h"
+#import "ZHPhotoAlbumTableViewController.h"
+#import "ZHPhotoAlbumNetworkService.h"
+#import "ZHPhotoCollectionViewController.h"
+#import "ZHPhotoCollectionViewLayout.h"
 #import "ZHUtility.h"
 
-static NSString *CellIdentifier = @"ZHEventTableViewCell";
+static NSString *CellIdentifier = @"ZHPhotoAlbumTableViewCell";
 static NSUInteger BatchSize = 20;
-static CGFloat TableCellHeight = 70.0f;
+static CGFloat TableCellHeight = 110.0f;
 
-@interface ZHEventTableViewController ()
+@interface ZHPhotoAlbumTableViewController ()
 
 @end
 
-@implementation ZHEventTableViewController
+@implementation ZHPhotoAlbumTableViewController
 
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize fetchedResultsController = _fetchedResultsController;
@@ -38,9 +39,9 @@ static CGFloat TableCellHeight = 70.0f;
 }
 
 - (void)setup {
-    ZHEventNetworkService *events = [[ZHEventNetworkService alloc] init];
-    [events getAllEvents];
-    [self setTitle:@"主页"];
+    ZHPhotoAlbumNetworkService *photoAlbums = [[ZHPhotoAlbumNetworkService alloc] init];
+    [photoAlbums getAllPhotoAlbums];
+    [self setTitle:@"照片墙"];
 }
 
 - (NSManagedObjectContext *)managedObjectContext {
@@ -56,11 +57,11 @@ static CGFloat TableCellHeight = 70.0f;
     }
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:entity_Event
+    NSEntityDescription *entity = [NSEntityDescription entityForName:entity_PhotoAlbum
                                               inManagedObjectContext:[self managedObjectContext]];
     [fetchRequest setEntity:entity];
     
-    NSSortDescriptor *sort = [[NSSortDescriptor alloc] initWithKey:@"endTime" ascending:YES];
+    NSSortDescriptor *sort = [[NSSortDescriptor alloc] initWithKey:@"guid" ascending:YES];
     [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sort]];
     [fetchRequest setFetchBatchSize:BatchSize];
     
@@ -68,7 +69,7 @@ static CGFloat TableCellHeight = 70.0f;
     [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
                                         managedObjectContext:[self managedObjectContext]
                                           sectionNameKeyPath:nil
-                                                   cacheName:@"Home"];
+                                                   cacheName:@"PhotoWall"];
     
     self.fetchedResultsController = aFetchedResultsController;
     _fetchedResultsController.delegate = self;
@@ -84,7 +85,7 @@ static CGFloat TableCellHeight = 70.0f;
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    [self.tableView registerClass:[ZHEventTableViewCell class] forCellReuseIdentifier:[self getCellIdentifier]];
+    [self.tableView registerClass:[ZHPhotoAlbumTableViewCell class] forCellReuseIdentifier:[self getCellIdentifier]];
     
     NSError *error = nil;
     if (![[self fetchedResultsController] performFetch:&error]) {
@@ -98,9 +99,11 @@ static CGFloat TableCellHeight = 70.0f;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    ZHEvent *event = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-    ZHEventDetailsViewController *detailsViewController = [[ZHEventDetailsViewController alloc] initWithEvent:event];
-    [self.navigationController pushViewController:detailsViewController animated:true];
+    ZHPhotoAlbum *photoAlbum = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+    ZHPhotoCollectionViewLayout *photoCollectionViewLayout = [[ZHPhotoCollectionViewLayout alloc] init];
+    ZHPhotoCollectionViewController *photoCollectionViewController = [[ZHPhotoCollectionViewController alloc] initWithCollectionViewLayout:photoCollectionViewLayout];
+    [photoCollectionViewController updateWithPhotoAlbum:photoAlbum];
+    [self.navigationController pushViewController:photoCollectionViewController animated:true];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -116,12 +119,12 @@ static CGFloat TableCellHeight = 70.0f;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ZHEventTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    ZHPhotoAlbumTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[ZHEventTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[self getCellIdentifier]];
+        cell = [[ZHPhotoAlbumTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[self getCellIdentifier]];
     }
-    ZHEvent *event = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-    [cell updateWithEvent:event];
+    ZHPhotoAlbum *photoAlbum = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+    [cell updateWithPhotoAlbum:photoAlbum];
     return cell;
 }
 

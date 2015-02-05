@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "ZHEvent.h"
 
-
 @interface ZHEventDetailsViewController : UIViewController
 
 - (id)initWithEvent:(ZHEvent *)event;

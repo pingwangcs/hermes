@@ -10,6 +10,7 @@
 #import <CoreData/CoreData.h>
 
 @class ZHEvent;
+@class ZHPhoto;
 @class ZHPhotoAlbum;
 
 @interface ZHModel : NSObject
@@ -23,6 +24,7 @@
 - (NSURL *)applicationDocumentsDirectory;
 
 - (ZHEvent *)getEventByGuid:(NSString *)guid;
+- (ZHPhoto *)getPhotoByGuid:(NSString *)guid;
 - (ZHPhotoAlbum *)getPhotoAlbumByGuid:(NSString *)guid;
 
 @end

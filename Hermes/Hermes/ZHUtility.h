@@ -13,4 +13,9 @@
 + (NSDate *)getDateFromString:(NSString *)string;
 + (NSString *)getStringFromDate:(NSDate *)date;
 
++ (NSString *)encodeString:(NSString *)string;
++ (NSString *)decodeString:(NSString *)string;
+
++ (void)logError:(NSError *)error;
+
 @end

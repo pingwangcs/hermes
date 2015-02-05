@@ -10,6 +10,5 @@
 
 @interface PhotoWallViewController : UINavigationController
 
-
 @end
 

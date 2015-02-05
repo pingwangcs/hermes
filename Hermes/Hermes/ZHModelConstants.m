@@ -8,5 +8,6 @@
 
 #import "ZHModelConstants.h"
 
-NSString * const entity_Event                           =   @"ZHEvent";
-NSString * const entity_PhotoAlbum                      =   @"ZHPhotoAlbum";
+NSString * const entity_Event                   =   @"ZHEvent";
+NSString * const entity_Photo                   =   @"ZHPhoto";
+NSString * const entity_PhotoAlbum              =   @"ZHPhotoAlbum";
